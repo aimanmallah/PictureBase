@@ -8,7 +8,7 @@ class ImageIndex extends React.Component {
         super()
         this.state = {
             data : [],
-            search: 'fish'
+            search: 'tower'
         }
     }
 
@@ -18,7 +18,8 @@ class ImageIndex extends React.Component {
             params: {
                 client_id: '817944c4f33c3d0024d8e30a6376e884a1dd5f75f89649a44c3c0b56c4f9267f',
                 query: this.state.search,
-                per_page: 100
+                per_page: 99,
+                orientation: 'landscape'
             }
         })
         .then( (res) => this.setState({ data: res.data }) )
@@ -26,45 +27,73 @@ class ImageIndex extends React.Component {
 
     handleChange = (e) => {
         this.setState({search: e.target.value})
+        
       }
 
     handleSubmit = () => {
+        console.log('this.state.search', this.state.search)
         axios.get('https://api.unsplash.com/search/photos/', {
             params: {
                 client_id: '817944c4f33c3d0024d8e30a6376e884a1dd5f75f89649a44c3c0b56c4f9267f',
                 query: this.state.search,
-                per_page: 100
+                per_page: 99,
+                orientation: 'landscape'
             }
         })
+        .then(res => this.setState({data : res.data}))
     }
 
 
     render(){
         if(!this.state.data.results) return null
-        console.log('state', this.state.data.results)
+        console.log('state', this.state)
         return(
-            <section>
-                <div className="search">
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        onChange={this.handleChange}
-                        value={this.state.search}
-                    >
-                    </input>
-                    <button type="button" onSubmit={this.handleSubmit}>Click Me </button>
+            <div className="body">
+                <div clasName="header">
                 </div>
+                <section className="wrapper">
 
-                <div className="index">
-                    {this.state.data.results.map(image => 
-                        <div key={image.id} className="card">
-                            <ImageCard {...image} />
+                    <div className="header">
+                        <div className="leftside">
+                            <h1>PictureBase</h1>
+                            <h4>The internet’s source of freely useable images.</h4>
+                            <h4>Powered by Unsplash API.</h4>
                         </div>
-                    )}
+                        <div className="rightside">
+                            <input
+                                type="text"
+                                placeholder="Type here..."
+                                onChange={this.handleChange}
+                                value={this.state.search}
+                            >
+                            </input>
+                            <button 
+                                type="button" 
+                                onClick={this.handleSubmit}
+                            >
+                                Search
+                            </button>
+                        </div>
+                    </div>
 
-                </div>
+                    <div className="popular">
+                        <h2>Popular Searches</h2>
+                    </div>
 
-            </section>
+                    <div className="index">
+                        {this.state.data.results.map(image => 
+                            <div key={image.id} className="card">
+                                <ImageCard {...image} />
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="footer">
+                        <h1>FOOTER</h1>
+                    </div>
+
+                </section>
+            </div>
         )
     }
 }
