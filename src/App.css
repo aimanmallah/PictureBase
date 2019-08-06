@@ -12,9 +12,16 @@ body {
 }
 
 /* Header Section */
+
+div.leftside {
+  background-color: #FEDCD2;
+  border: solid #3b3e4d 2px;
+  border-radius: 10px;
+}
+
 h1 {
   font-family: 'Red Hat Display', sans-serif;
-  font-size: 75px;
+  font-size: 85px;
   color: #3b3e4d;
   text-align: center;
   margin: 10px;
@@ -22,10 +29,26 @@ h1 {
 }
 
 h4 {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Red Hat Display', sans-serif;
   color: #3b3e4d;
-  font-size: 20px;
+  font-size: 22px;
   text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+  margin: 5px;
+}
+
+/* Popular Searches Section */
+
+div.popular {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  /* background-color: #6d7993; */
+}
+
+div.popular > button {
+  margin-top: 20px;
+  width: 150px;
+  height: 50px;;
 }
 
 /* Search Section */
@@ -47,20 +70,32 @@ input {
   height: 40px;
   text-align: center;
   margin-bottom: 25px;
+  font-size: 20px;
+  font-family: 'Red Hat Display', sans-serif;
+  color: #3b3e4d;
 }
 
 button {
   border: solid #3b3e4d 3px;
-  height: 46px;
+  height: 47px;
   text-align: center;
   margin:0 0 25px 5px;
+  background-color: #FEDCD2;
+  font-size: 20px;
+  font-family: 'Red Hat Display', sans-serif;
+  color: #3b3e4d;
+}
+
+button:hover {
   background-color: white;
+  color: #3b3e4d;
+  border: solid 2px #FEDCD2;
 }
 
 div.index {
-  padding-top: 20px;
+  /* padding-top: 20px; */
   grid-column: 1/-1;
-  background-color: ghostwhite;
+  background-color: #3b3e4d;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;

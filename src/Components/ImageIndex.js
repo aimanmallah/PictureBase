@@ -8,7 +8,7 @@ class ImageIndex extends React.Component {
         super()
         this.state = {
             data : [],
-            search: 'tower'
+            search: ''
         }
     }
 
@@ -55,14 +55,13 @@ class ImageIndex extends React.Component {
 
                     <div className="header">
                         <div className="leftside">
-                            <h1>PictureBase</h1>
-                            <h4>The internet’s source of freely useable images.</h4>
+                            <h1>PicBase.</h1>
                             <h4>Powered by Unsplash API.</h4>
                         </div>
                         <div className="rightside">
                             <input
                                 type="text"
-                                placeholder="Type here..."
+                                placeholder="Search free high-resolution photos"
                                 onChange={this.handleChange}
                                 value={this.state.search}
                             >
@@ -77,7 +76,11 @@ class ImageIndex extends React.Component {
                     </div>
 
                     <div className="popular">
-                        <h2>Popular Searches</h2>
+                        <button>Nature</button>
+                        <button>Wallpapers</button>
+                        <button>Business</button>
+                        <button>Travel</button>
+                        <button>Fashion</button>
                     </div>
 
                     <div className="index">
